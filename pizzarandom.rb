@@ -2,8 +2,8 @@ def crust
 	crust_choice = ['Thin', 'Hand_Tossed', 'Pretzel', 'Cheese_Stuffed'].sample
 end
 
-def pizza
-	puts """What you're getting on your pizza:
+def pizza(x)
+	puts """What you're getting on Pizza #{x}:
 	CRUST: #{crust}
 	SAUCE: #{sauce}
 	MEAT: #{meat}
@@ -11,7 +11,7 @@ def pizza
 	VEGGIE: #{veggie}
 	SPECIAL: #{special}
 	"""
-	puts """And for you side:
+	puts """And for your side:
 	#{side}
 	"""
 	puts """And your drink:
@@ -54,6 +54,6 @@ cash = pizza_count * 15
 x = 0
 pizza_count.times do
 	x += 1
-	pizza
+	pizza(x)
 end
 puts "Your total for this order is $#{cash}."
