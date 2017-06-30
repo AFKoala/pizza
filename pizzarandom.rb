@@ -51,7 +51,7 @@ puts "How many pizzas do you want?"
 pizza_count = gets.chomp.to_i
 cash = pizza_count * 15
 
-x = 1
+x = 0
 pizza_count.times do
 	x += 1
 	pizza
