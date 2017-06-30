@@ -3,7 +3,7 @@ def crust
 end
 
 def pizza(x)
-	puts """What you're getting on Pizza #{x}:
+	puts """What you're getting on your Pizza #{x} (#{size}):
 	CRUST: #{crust}
 	SAUCE: #{sauce}
 	MEAT: #{meat}
@@ -47,13 +47,55 @@ def drink
 	drink_choice = ['Water', 'Pepsi', 'Mountain_Dew', 'Diet_Pepsi', 'Fanta_Orange', 'Fanta_Grape', 'Cherry_Pepsi', 'Dr_Pepper', '7_UP'].sample
 end
 
+def size
+	pizza_size = ['Small', 'Medium', 'Large', 'Extra_Large'].sample
+end
+
+def sizeprice
+	if size == 'Small'
+		price = 6
+	elsif size == 'Medium'
+		price = 8
+	elsif size == 'Large'
+		price = 10
+	elsif size == 'Extra_Large'
+		price = 12
+	else
+	end
+end
+
+time = rand(1..60)
+puts "Is this for delivery? (y/n)"
+delivery = gets.chomp
 puts "How many pizzas do you want?"
 pizza_count = gets.chomp.to_i
-cash = pizza_count * 15
+total = (pizza_count.to_i * sizeprice.to_i) + ((pizza_count.to_i * sizeprice.to_i) * 0.06)
+delivery_charge = 3
+tip = total * 0.20
+delivery_total_tip = (((pizza_count.to_i * sizeprice.to_i) + delivery_charge.to_i) + (((pizza_count.to_i * sizeprice.to_i) + delivery_charge.to_i) * 0.06) + tip).round(2)
+delivery_total = (((pizza_count.to_i * sizeprice.to_i) + delivery_charge.to_i) + (((pizza_count.to_i * sizeprice.to_i) + delivery_charge.to_i) * 0.06)).round(2)
 
-x = 0
-pizza_count.times do
-	x += 1
-	pizza(x)
+if delivery ==  'y'
+	if time < 30
+		x = 0
+		pizza_count.times do
+			x += 1
+			pizza(x)
+		end
+		puts "Your total for this order is #{delivery_total_tip}."
+	else
+		x = 0
+		pizza_count.times do
+			x += 1
+			pizza(x)
+		end
+		puts "Your total for this order is #{delivery_total}."
+	end
+else
+	x = 0
+	pizza_count.times do
+		x += 1
+		pizza(x)
+	end
+	puts "Your total for this order is #{total}."
 end
-puts "Your total for this order is $#{cash}."
